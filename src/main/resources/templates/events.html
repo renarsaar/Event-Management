@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<body>
+<section layout:fragment="content">
+    <h1>Product Catalog</h1>
+
+    <table th:if="${events}" class="events" cellpadding="10" cellspacing="0" border="0">
+        <tr th:each="event: ${events}" class="event">
+            <th th:text="${event.name}" />
+            <td th:text="${event.description}" />
+            <td th:text="${event.eventTime}" />
+        </tr>
+    </table>
+</section>
+</body>
+</html>
