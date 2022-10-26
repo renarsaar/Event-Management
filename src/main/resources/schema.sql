@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS event (
 -- ------ PERSON ------
 
 CREATE TABLE IF NOT EXISTS person (
-    id INT NOT NULL PRIMARY KEY,
-    event_id VARCHAR(64) NOT NULL,
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    event_id VARCHAR(255) NOT NULL,
     first_name VARCHAR(64) NOT NULL,
     last_name VARCHAR(64) NOT NULL,
     personal_code VARCHAR(11) NOT NULL,
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS person (
 -- ------ COMPANY ------
 
 CREATE TABLE IF NOT EXISTS company (
-    id INT NOT NULL PRIMARY KEY,
-    event_id VARCHAR(64) NOT NULL,
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
+    event_id VARCHAR(255) NOT NULL,
     legal_name VARCHAR(255) NOT NULL,
     registry_code VARCHAR(32) NOT NULL,
     number_of_partakers INT NOT NULL,
