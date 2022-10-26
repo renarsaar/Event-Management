@@ -5,11 +5,11 @@ TRUNCATE TABLE company;
 ------ EVENTS ------
 
 INSERT INTO event VALUES
-    ('1', 'Aenean commodo', '2022-05-30 10:00:00', 'Tallinn', 'TEST'),
-    ('2', 'Fusce ex dui, finibus eu luctus vel', '2025-05-30 10:00:00', 'Tartu', 'TEST'),
-    ('3', 'Nunc lobortis metus eu massa viverra ultri iplacerat nibh', '2018-05-30 10:00:00', 'Pärnu', 'TEST'),
-    ('4', 'Integer nec nulla vitae', '2022-12-30 10:00:00', 'Valga', 'TEST'),
-    ('5', 'Praesent molestie dapibus lorem', '2020-05-30 10:00:00', 'Saaremaa', 'TEST');
+    ('1', 'Aenean commodo', '2022-05-30T10:00', 'Tallinn', 'TEST'),
+    ('2', 'Fusce ex dui, finibus eu luctus vel', '2025-05-30T10:00', 'Tartu', 'TEST'),
+    ('3', 'Nunc lobortis metus eu massa viverra ultri iplacerat nibh', '2018-05-30T10:00', 'Pärnu', 'TEST'),
+    ('4', 'Integer nec nulla vitae', '2022-12-30T10:00', 'Valga', 'TEST'),
+    ('5', 'Praesent molestie dapibus lorem', '2020-05-30T10:00', 'Saaremaa', 'TEST');
 
 ------ PERSON ------
 

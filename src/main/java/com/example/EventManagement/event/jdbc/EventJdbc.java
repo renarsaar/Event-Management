@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString(of = {"id", "name", "eventLocation", "description"})
+@Slf4j
 final class EventJdbc implements Event {
     private final @NonNull EventId id;
     private @NonNull Name name;
@@ -50,7 +52,16 @@ final class EventJdbc implements Event {
 
     @Override
     public void createEvent() {
-           jdbcTemplate.update("INSERT INTO events VALUES(?, ?, ?, ?, ?)",
+           jdbcTemplate.update("INSERT INTO event VALUES(?, ?, ?, ?, ?)",
                    id.value(), name.value(), eventTime.value(), eventLocation.value(), description.value());
+
+           log.info("Event Created");
+    }
+
+    @Override
+    public void deleteEvent(EventId eventId) {
+        jdbcTemplate.update("DELETE FROM event WHERE id = ?", eventId.value());
+
+        log.info("Event deleted");
     }
 }

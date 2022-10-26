@@ -17,4 +17,6 @@ public interface Event {
     Description description();
 
     void createEvent();
+
+    void deleteEvent(EventId id);
 }

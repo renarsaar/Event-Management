@@ -1,7 +1,7 @@
 -- ------ EVENTS ------
 
 CREATE TABLE IF NOT EXISTS event (
-    id INT NOT NULL PRIMARY KEY,
+    id VARCHAR(255) NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     event_time VARCHAR(32) NOT NULL,
     event_location VARCHAR(255) NOT NULL,

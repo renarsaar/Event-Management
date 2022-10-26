@@ -25,9 +25,12 @@ final class FindEventsJdbc implements FindEvents {
         );
     }
 
-    // Todo
     @Override
     public Event byId(EventId id) {
-        return null;
+        return new EventsJdbc(
+                "SELECT id, name, event_time, event_location, description FROM event WHERE id = ?",
+                id.value(), jdbcTemplate).stream()
+                .findFirst()
+                .orElseGet(UnknownEvent::new);
     }
 }

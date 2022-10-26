@@ -13,4 +13,9 @@ class EventJdbcConfig {
     FindEventsJdbc findEventsJdbc(JdbcTemplate jdbcTemplate) {
         return new FindEventsJdbc(jdbcTemplate);
     }
+
+    @Bean
+    CreateEventJdbc createEventJdbc(JdbcTemplate jdbcTemplate) {
+        return new CreateEventJdbc(jdbcTemplate);
+    }
 }
