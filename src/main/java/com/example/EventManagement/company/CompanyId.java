@@ -1,15 +1,18 @@
-package com.example.EventManagement.participant;
+package com.example.EventManagement.company;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Company ID domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
-public class ParticipantId {
+public final class CompanyId {
     private final @NonNull String id;
 
-    public ParticipantId(@NonNull Object id) {
+    public CompanyId(@NonNull Object id) {
         var idVal = id.toString().strip();
 
         if (idVal.isBlank()) {

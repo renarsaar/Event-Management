@@ -1,4 +1,4 @@
-package com.example.EventManagement.participant.company;
+package com.example.EventManagement.company;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;

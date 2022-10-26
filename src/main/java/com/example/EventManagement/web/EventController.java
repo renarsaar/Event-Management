@@ -1,8 +1,12 @@
 package com.example.EventManagement.web;
 
+import com.example.EventManagement.company.Companies;
+import com.example.EventManagement.company.FindCompaniesFromEvent;
 import com.example.EventManagement.event.Event;
 import com.example.EventManagement.event.EventId;
 import com.example.EventManagement.event.FindEvents;
+import com.example.EventManagement.person.FindPersonsFromEvent;
+import com.example.EventManagement.person.Persons;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,10 +22,12 @@ import java.util.Map;
  */
 @Controller
 @RequiredArgsConstructor
-public class EventController {
+class EventController {
     private static final int MAX_RESULTS = 10;
 
     private final @NonNull FindEvents events;
+    private final @NonNull FindCompaniesFromEvent companiesFromEvent;
+    private final @NonNull FindPersonsFromEvent personsFromEvent;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -37,12 +43,18 @@ public class EventController {
         return "events";
     }
 
-/*    @GetMapping("/event/{eventId}")
+    @GetMapping("/event/{eventId}")
     public String event(@PathVariable @NonNull EventId eventId, Model model) {
-        model.addAttribute("events", events.byId(eventId));
+        Companies companies = companiesFromEvent.byEventId(eventId);
+        Persons persons = personsFromEvent.byEventId(eventId);
 
-        return "event";
-    }*/
+        System.out.println(companies);
+        System.out.println(persons);
+
+        // model.addAttribute("events", events.byId(eventId));
+
+        return "event/{eventId}";
+    }
 
     private Map<String, Object> toData(Event event) {
         return Map.of(
@@ -50,8 +62,7 @@ public class EventController {
                 "name", event.name().value(),
                 "eventTime", event.eventTime().value(),
                 "eventLocation", event.eventLocation().value(),
-                "description", event.description().value(),
-                "participants", event.participants().toArray()
+                "description", event.description().value()
         );
     }
 }

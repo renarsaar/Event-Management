@@ -14,15 +14,3 @@ class EventJdbcConfig {
         return new FindEventsJdbc(jdbcTemplate);
     }
 }
-
-/**
- *
- * spring.jpa.hibernate.ddl-auto=update
- * spring.datasource.url=jdbc:mysql://localhost:3306/nullam
- * spring.datasource.username=root
- * spring.datasource.password=qwerty
- * spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
- * logging.level.org.hibernate.SQL=DEBUG
- * logging.level.org.hibernate.type=TRACE
- *
- */

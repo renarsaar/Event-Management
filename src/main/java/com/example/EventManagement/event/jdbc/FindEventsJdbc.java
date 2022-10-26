@@ -20,11 +20,12 @@ final class FindEventsJdbc implements FindEvents {
     @Override
     public Events all() {
         return new EventsJdbc(
-                "SELECT id, name, eventTime, eventLocation, description FROM events",
+                "SELECT id, name, event_time, event_location, description FROM event",
                 jdbcTemplate
         );
     }
 
+    // Todo
     @Override
     public Event byId(EventId id) {
         return null;

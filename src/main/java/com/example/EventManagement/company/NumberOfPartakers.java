@@ -1,17 +1,17 @@
-package com.example.EventManagement.participant.company;
+package com.example.EventManagement.company;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
 /**
- * Company number of partakers domain primitive.
+ * Company Number of Partakers domain primitive.
  */
 @EqualsAndHashCode
 // @ToString
 public final class NumberOfPartakers {
-    private final @NonNull int numberOfPartakers;
+    private final @NonNull Integer numberOfPartakers;
 
-    public NumberOfPartakers(int numberOfPartakers) {
+    public NumberOfPartakers(Integer numberOfPartakers) {
         if (numberOfPartakers < 0) {
             throw new IllegalArgumentException("Invalid amount of partakers");
         }

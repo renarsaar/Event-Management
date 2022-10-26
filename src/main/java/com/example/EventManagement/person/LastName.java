@@ -1,4 +1,4 @@
-package com.example.EventManagement.participant.person;
+package com.example.EventManagement.person;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;

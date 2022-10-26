@@ -2,14 +2,11 @@ package com.example.EventManagement.event.jdbc;
 
 import com.example.EventManagement.common.primitives.Description;
 import com.example.EventManagement.event.*;
-import com.example.EventManagement.participant.Participant;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.List;
 
 /**
  * JDBC implementation for Event entity.
@@ -23,7 +20,6 @@ final class EventJdbc implements Event {
     private @NonNull EventTime eventTime;
     private @NonNull EventLocation eventLocation;
     private @NonNull Description description;
-    private @NonNull List<Participant> participants;
 
     private final @NonNull JdbcTemplate jdbcTemplate;
 
@@ -50,11 +46,6 @@ final class EventJdbc implements Event {
     @Override
     public Description description() {
         return description;
-    }
-
-    @Override
-    public List<Participant> participants() {
-        return participants;
     }
 
     @Override

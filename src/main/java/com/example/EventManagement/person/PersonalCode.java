@@ -1,4 +1,4 @@
-package com.example.EventManagement.participant.person;
+package com.example.EventManagement.person;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
@@ -36,5 +36,9 @@ public final class PersonalCode {
         }
 
         this.personalCode = personalCodeVar;
+    }
+
+    public String value() {
+        return personalCode;
     }
 }

@@ -1,45 +1,33 @@
 -- ------ EVENTS ------
 
-CREATE TABLE IF NOT EXISTS events (
+CREATE TABLE IF NOT EXISTS event (
     id INT NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    eventTime VARCHAR(32) NOT NULL,
-    eventLocation VARCHAR(255) NOT NULL,
+    event_time VARCHAR(32) NOT NULL,
+    event_location VARCHAR(255) NOT NULL,
     description TEXT(1000) NOT NULL
 );
 
--- ------ PARTICIPANT ------
-
-CREATE TABLE IF NOT EXISTS participant {
-    id INT NOT NULL PRIMARY KEY,
-
-    paymentType VARCHAR(32) NOT NULL,
-    description VARCHAR TEXT(1500)
-}
-
-CREATE TABLE IF NOT EXISTS event_participants {
-    event_id VARCHAR(64) NOT NULL,
-    participant_id VARCHAR(64) NOT NULL,
-    PRIMARY KEY (event_id, participant_id)
-}
-
 -- ------ PERSON ------
 
-CREATE TABLE IF NOT EXISTS person {
+CREATE TABLE IF NOT EXISTS person (
     id INT NOT NULL PRIMARY KEY,
-    firstName VARCHAR(64) NOT NULL,
-    lastName VARCHAR(64) NOT NULL,
-    personalCode VARCHAR(11) NOT NULL,
-    paymentType VARCHAR(32) NOT NULL,
-    description VARCHAR TEXT(1500)
-}
+    event_id VARCHAR(64) NOT NULL,
+    first_name VARCHAR(64) NOT NULL,
+    last_name VARCHAR(64) NOT NULL,
+    personal_code VARCHAR(11) NOT NULL,
+    payment_type VARCHAR(32) NOT NULL,
+    description TEXT(1500) NOT NULL
+);
 
 -- ------ COMPANY ------
 
-CREATE TABLE IF NOT EXISTS company {
+CREATE TABLE IF NOT EXISTS company (
     id INT NOT NULL PRIMARY KEY,
-    registryCode VARCHAR(32) NOT NULL,
-    numberOfPartakers INT NOT NULL,
-    paymentType VARCHAR(32) NOT NULL,
-    description VARCHAR TEXT(5000)
-}
+    event_id VARCHAR(64) NOT NULL,
+    legal_name VARCHAR(255) NOT NULL,
+    registry_code VARCHAR(32) NOT NULL,
+    number_of_partakers INT NOT NULL,
+    payment_type VARCHAR(32) NOT NULL,
+    description TEXT(5000) NOT NULL
+);
