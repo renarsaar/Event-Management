@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title th:text="#{layout.title}">Event Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <!-- Navbar -->
+    <nav class="navbar px-2 mt-3 navbar-light bg-light justify-content-between">
+        <div>
+            <img class="navbar-brand" th:src="@{/assets/logo.svg}" alt="Logo">
+
+            <a class="navbar-brand text-uppercase" role="button" th:href="@{/}">Avaleht</a>
+            <a class="navbar-brand text-uppercase" role="button" th:href="@{/event/create}">Ürituse lisamine</a>
+        </div>
+
+        <div style="text-align: center;">
+            <img th:src="@{/assets/symbol.svg}" alt="Symbol">
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Error -->
+    <h1>Error</h1>
+
+    <div class="error">
+        <p class="message" th:text="${messageCode}">Unexpected error occurred</p>
+    </div>
+    <!-- End Error -->
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-dark text-light mb-4">
+        <section class="container p-1">
+            <div class="container text-center text-md-start mt-5 px-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h5 class="fw-bold mb-4">Curabitur</h5>
+
+                        <p>Emauris</p>
+                        <p>Kfringilla</p>
+                        <p>Oin magna sem</p>
+                        <p>Kelementum</p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h5 class="fw-bold mb-4">Fusce</h5>
+
+                        <p>Econsectetur</p>
+                        <p>Ksollicitudin</p>
+                        <p>Omvulputate</p>
+                        <p>Nunc fringilla tellu</p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h5 class="fw-bold mb-4">Kontakt</h5>
+
+                        <p class="fw-bold">Peakontor: Talinnas</p>
+                        <p>Väike Ameerika 1, 11415 Tallinn</p>
+                        <p>Telefon: 605 4450</p>
+                        <p>Faks: 605 3186</p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h5 class="mb-5"></h5>
+
+                        <p class="fw-bold">Harukontor: Võrus</p>
+                        <p>Oja tn 7 (külastusaadress)</p>
+                        <p>Telefon: 605 3330</p>
+                        <p>Faks: 605 3155</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer -->
+</div>
+</body>
+</html>

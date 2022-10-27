@@ -25,9 +25,9 @@ public interface Person {
 
     void createPerson();
 
-    // Todo: Different methods to complete
+    void deletePerson(ParticipantId id);
 
-    // void deletePerson(ParticipantId id);
+    // Todo: Different methods to complete
 
     // void changeFirstName(FirstName firstName);
 

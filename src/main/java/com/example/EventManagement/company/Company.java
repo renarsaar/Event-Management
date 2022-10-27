@@ -25,9 +25,9 @@ public interface Company {
 
     void createCompany();
 
-    // Todo: Different methods to complete
+    void deleteCompany(ParticipantId id);
 
-    // void deleteCompany(ParticipantId id);
+    // Todo: Different methods to complete
 
     // void changeLegalName(LegalName legalName);
 

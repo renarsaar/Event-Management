@@ -13,4 +13,14 @@ class CompanyJdbcConfig {
     FindCompaniesFromEventJdbc findCompaniesFromEventJdbc(JdbcTemplate jdbcTemplate) {
         return new FindCompaniesFromEventJdbc(jdbcTemplate);
     }
+
+    @Bean
+    FindCompaniesJdbc findCompanies(JdbcTemplate jdbcTemplate) {
+        return new FindCompaniesJdbc(jdbcTemplate);
+    }
+
+    @Bean
+    CreateCompanyJdbc createCompanyJdbc(JdbcTemplate jdbcTemplate) {
+        return new CreateCompanyJdbc(jdbcTemplate);
+    }
 }

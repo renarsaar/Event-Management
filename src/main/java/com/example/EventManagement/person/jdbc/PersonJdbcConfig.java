@@ -13,4 +13,14 @@ class PersonJdbcConfig {
     FindPersonsFromEventJdbc findPersonsFromEventJdbc(JdbcTemplate jdbcTemplate) {
         return new FindPersonsFromEventJdbc(jdbcTemplate);
     }
+
+    @Bean
+    FindPersonsJdbc findPersonsJdbc(JdbcTemplate jdbcTemplate) {
+        return new FindPersonsJdbc(jdbcTemplate);
+    }
+
+    @Bean
+    CreatePersonJdbc createPersonJdbc(JdbcTemplate jdbcTemplate) {
+        return new CreatePersonJdbc(jdbcTemplate);
+    }
 }

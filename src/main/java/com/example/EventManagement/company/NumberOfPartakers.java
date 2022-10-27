@@ -7,7 +7,6 @@ import lombok.NonNull;
  * Company Number of Partakers domain primitive.
  */
 @EqualsAndHashCode
-// @ToString
 public final class NumberOfPartakers {
     private final @NonNull Integer numberOfPartakers;
 

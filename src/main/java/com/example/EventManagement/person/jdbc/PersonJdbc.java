@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString(of = {"id", "eventId", "firstName", "lastName", "personalCode", "paymentType", "description"})
+@Slf4j
 final class PersonJdbc implements Person {
     private final @NonNull ParticipantId id;
     private final @NonNull EventId eventId;
@@ -74,5 +76,14 @@ final class PersonJdbc implements Person {
                 paymentType.value(),
                 description.value()
         );
+
+        log.info("Person created");
+    }
+
+    @Override
+    public void deletePerson(ParticipantId id) {
+        jdbcTemplate.update("DELETE FROM person WHERE id = ?", id.value());
+
+        log.info("Person deleted");
     }
 }

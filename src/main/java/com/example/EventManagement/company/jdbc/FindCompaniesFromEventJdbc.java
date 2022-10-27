@@ -20,7 +20,7 @@ final class FindCompaniesFromEventJdbc implements FindCompaniesFromEvent {
     public Companies byEventId(@NonNull EventId eventId) {
         return new CompaniesJdbc(
             "SELECT " +
-                    "c.legal_name, c.registry_code " +
+                    "c.id, c.event_id, c.legal_name, c.registry_code, c.number_of_partakers, c.payment_type, c.description " +
                     "FROM company c " +
                     "WHERE c.event_id = ?",
                 eventId.value(), jdbcTemplate);

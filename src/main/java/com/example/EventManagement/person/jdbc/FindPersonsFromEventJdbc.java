@@ -20,7 +20,7 @@ final class FindPersonsFromEventJdbc implements FindPersonsFromEvent {
     public Persons byEventId(@NonNull EventId eventId) {
         return new PersonsJdbc(
             "SELECT " +
-                    "p.first_name, p.last_name, p.personal_code " +
+                    "p.id, p.event_id, p.first_name, p.last_name, p.personal_code, p.payment_type, p.description " +
                     "FROM person p " +
                     "WHERE p.event_id = ?",
                 eventId.value(), jdbcTemplate);

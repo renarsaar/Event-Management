@@ -59,7 +59,11 @@
 
                         <p th:text="${#dates.format(sdf.parse(event.event_time), 'dd-MM-yyyy')}"></p>
 
-                        <span role="button" class="mr-4"><b>OSAVÕTJAD</b></span>
+                        <span role="button" class="mr-4">
+                            <a th:href="@{/event/{id}(id=${event.id})}">
+                                <b>OSAVÕTJAD</b>
+                            </a>
+                        </span>
 
                         <a th:href="@{/event/delete(eventId=${event.id})}">
                             <img th:src="@{assets/remove.svg}" width="25px" height="25px" alt="Remove" role="button">
@@ -85,7 +89,11 @@
 
                         <p th:text="${#dates.format(sdf.parse(event.event_time), 'dd-MM-yyyy')}"></p>
 
-                        <span role="button" class="mr-4"><b>OSAVÕTJAD</b></span>
+                        <span role="button" class="mr-4">
+                            <a th:href="@{/event/{id}(id=${event.id})}">
+                                <b>OSAVÕTJAD</b>
+                            </a>
+                        </span>
                     </li>
                     </th:block>
                 </ul>
