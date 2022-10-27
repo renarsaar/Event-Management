@@ -66,7 +66,7 @@
                     <div th:each="company: ${companies}" class="my-3 d-flex justify-content-between align-items-center">
                         <p th:text="${company.legal_name}"></p>
                         <p th:text="${company.registry_code}"></p>
-                        <a>Vaata</a>
+                        <a th:href="@{/company/edit/{companyId}(companyId=${company.id})}">Vaata</a>
                         <a th:href="@{/company/delete(companyId=${company.id}, eventId=${event.id})}">Kustuta</a>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <div th:each="person: ${persons}" class="my-3 d-flex justify-content-between align-items-center">
                         <p th:text="${person.first_name + ' ' + person.last_name}"></p>
                         <p th:text="${person.personal_code}"></p>
-                        <button>Vaata</button>
+                        <a th:href="@{/person/edit/{personId}(personId=${person.id})}">Vaata</a>
                         <a th:href="@{/person/delete(personId=${person.id}, eventId=${event.id})}">Kustuta</a>
                     </div>
                 </div>

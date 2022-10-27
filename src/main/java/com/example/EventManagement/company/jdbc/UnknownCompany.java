@@ -55,5 +55,8 @@ public class UnknownCompany implements Company {
         // Do nothing
     }
 
-
+    @Override
+    public void editCompany(ParticipantId id, LegalName legalName, RegistryCode registryCode, NumberOfPartakers numberOfPartakers, PaymentType paymentType, Description description) {
+        // Do nothing
+    }
 }

@@ -27,15 +27,5 @@ public interface Person {
 
     void deletePerson(ParticipantId id);
 
-    // Todo: Different methods to complete
-
-    // void changeFirstName(FirstName firstName);
-
-    // void changeLastName(LastName lastName);
-
-    // void changePersonalCode(PersonalCode personalCode);
-
-    // void changePaymentType(PaymentType paymentType);
-
-    // void changeDescription(Description description);
+    void editPerson(ParticipantId id, FirstName firstName, LastName lastName, PersonalCode personalCode, PaymentType paymentType, Description description);
 }

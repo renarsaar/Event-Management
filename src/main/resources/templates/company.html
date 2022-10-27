@@ -25,32 +25,32 @@
     </nav>
     <!-- End Navbar -->
 
-    <div th:if="${person}" class="container-fluid" style="max-width: 700px;">
+    <div th:if="${company}" class="container-fluid" style="max-width: 700px;">
         <!-- Form -->
-        <form th:action="@{/person/edit(personId=${person.id})}" th:object="${form}" method="post">
+        <form th:action="@{/company/edit(companyId=${company.id})}" th:object="${form}" method="post">
             <h3 class="text-primary my-4">Osavõtja info</h3>
 
             <div class="form-group row mb-3">
-                <label for="firstName" class="col-sm-2 col-form-label">Eesnimi: </label>
+                <label for="legalName" class="col-sm-2 col-form-label">Ettevõtte nimi: </label>
 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstName" th:name="firstName" th:value="${person.first_name}">
+                    <input type="text" class="form-control" id="legalName" th:name="legalName" th:value="${company.legal_name}">
                 </div>
             </div>
 
             <div class="form-group row mb-3">
-                <label for="lastName" class="col-sm-2 col-form-label">Perenimi: </label>
+                <label for="registryCode" class="col-sm-2 col-form-label">Registrikood: </label>
 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lastName" th:name="lastName" th:value="${person.last_name}">
+                    <input type="text" class="form-control" id="registryCode" th:name="registryCode" th:value="${company.registry_code}">
                 </div>
             </div>
 
             <div class="form-group row mb-3">
-                <label for="personalCode" class="col-sm-2 col-form-label">Isikukood: </label>
+                <label for="numberOfPartakers" class="col-sm-2 col-form-label">Osalejate arv: </label>
 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="personalCode" th:name="personalCode" th:value="${person.personal_code}">
+                    <input type="number" class="form-control" id="numberOfPartakers" th:name="numberOfPartakers" th:value="${company.number_of_partakers}">
                 </div>
             </div>
 
@@ -58,9 +58,9 @@
                 <label for="paymentType" class="col-sm-2 col-form-label">Maksmisviis: </label>
 
                 <div class="col-sm-10">
-                    <select class="col-sm-10 form-select" id="paymentType" name="paymentType" th:name="paymentType" th:value="${person.payment_type}">
-                        <option th:selected="${person.payment_type == 'cash'}" value="cash">Sularaha</option>
-                        <option th:selected="${person.payment_type == 'transfer'}" value="transfer">ülekanne</option>
+                    <select class="col-sm-10 form-select" id="paymentType" name="paymentType" th:name="paymentType" th:value="${company.payment_type}">
+                        <option th:selected="${company.payment_type == 'cash'}" value="cash">Sularaha</option>
+                        <option th:selected="${company.payment_type == 'transfer'}" value="transfer">Ülekanne</option>
                     </select>
                 </div>
             </div>
@@ -69,12 +69,12 @@
                 <label for="description" class="col-sm-2 col-form-label">Lisainfo: </label>
 
                 <div class="col-sm-10">
-                    <textarea class="form-control" id="description" rows="3" th:name="description" th:text="${person.description}" th:value="${person.description}"></textarea>
+                    <textarea class="form-control" rows="3" id="description" th:name="description" th:text="${company.description}" th:value="${company.description}"></textarea>
                 </div>
             </div>
 
             <div class="my-5">
-                <button class="btn btn-secondary px-4" type="submit">
+                <button class="btn btn-secondary px-4">
                     <a class="text-light" th:href="@{/}">
                         Tagasi
                     </a>
@@ -132,6 +132,5 @@
 </footer>
 <!-- Footer -->
 </div>
-
 </body>
 </html>

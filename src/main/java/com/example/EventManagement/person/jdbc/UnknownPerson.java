@@ -54,4 +54,9 @@ public class UnknownPerson implements Person {
     public void deletePerson(ParticipantId id) {
         // Do Nothing
     }
+
+    @Override
+    public void editPerson(ParticipantId id, FirstName firstName, LastName lastName, PersonalCode personalCode, PaymentType paymentType, Description description) {
+        // Do Nothing
+    }
 }

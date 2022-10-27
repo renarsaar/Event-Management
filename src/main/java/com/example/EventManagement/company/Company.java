@@ -27,15 +27,5 @@ public interface Company {
 
     void deleteCompany(ParticipantId id);
 
-    // Todo: Different methods to complete
-
-    // void changeLegalName(LegalName legalName);
-
-    // void changeRegistryCode(RegistryCode registryCode);
-
-    // void changeNumberOfPartakers(NumberOfPartakers numberOfPartakers);
-
-    // void changePaymentType(PaymentType paymentType);
-
-    // void changeDescription(Description description);
+    void editCompany(ParticipantId id, LegalName legalName, RegistryCode registryCode, NumberOfPartakers numberOfPartakers, PaymentType paymentType, Description description);
 }

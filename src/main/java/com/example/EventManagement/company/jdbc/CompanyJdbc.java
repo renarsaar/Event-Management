@@ -89,4 +89,24 @@ final class CompanyJdbc implements Company {
 
         log.info("Company deleted");
     }
+
+    @Override
+    public void editCompany(ParticipantId id, LegalName legalName, RegistryCode registryCode, NumberOfPartakers numberOfPartakers, PaymentType paymentType, Description description) {
+        jdbcTemplate.update(
+                "UPDATE company " +
+                        "SET legal_name = ?, " +
+                        "registry_code = ?, " +
+                        "number_of_partakers = ?, " +
+                        "payment_type = ?, " +
+                        "description = ? WHERE id = ?",
+                legalName.value(),
+                registryCode.value(),
+                numberOfPartakers.value(),
+                paymentType.value(),
+                description.value(),
+                participantId().value()
+        );
+
+        log.info("Company edited");
+    }
 }

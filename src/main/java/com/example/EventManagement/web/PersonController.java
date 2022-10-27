@@ -9,11 +9,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -56,6 +54,35 @@ class PersonController {
         return "redirect:/event/" + eventId;
     }
 
+    @GetMapping("/person/edit/{personId}")
+    public String edit(@PathVariable @NonNull String personId, Model model) {
+        Person person = persons.byId(new ParticipantId(personId));
+        Map<String, Object> personData = toData(person);
+        model.addAttribute(
+                "person", personData
+        );
+
+        return "person.html";
+    }
+
+    @PostMapping("/person/edit")
+    public String update(
+            @RequestParam(name = "personId") String personId,
+            String firstName, String lastName, String personalCode, String paymentType, String description
+    ) {
+        Person person = persons.byId(new ParticipantId(personId));
+        person.editPerson(
+                new ParticipantId(personId),
+                new FirstName(firstName),
+                new LastName(lastName),
+                new PersonalCode(personalCode),
+                new PaymentType(paymentType),
+                new Description(description, 1500)
+        );
+
+        return "redirect:/";
+    }
+
     @GetMapping("/person/error")
     public String error(String message, Model model) {
         model.addAttribute("messageCode", message);
@@ -75,5 +102,17 @@ class PersonController {
         }
 
         return "Something went wrong creating a new participant";
+    }
+
+    private Map<String, Object> toData(Person person) {
+        return Map.of(
+                "id", person.participantId().value(),
+                "event_id", person.eventId().value(),
+                "first_name", person.firstName().value(),
+                "last_name", person.lastName().value(),
+                "personal_code", person.personalCode().value(),
+                "payment_type", person.paymentType().value(),
+                "description", person.description().value()
+        );
     }
 }

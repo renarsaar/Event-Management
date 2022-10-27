@@ -86,4 +86,24 @@ final class PersonJdbc implements Person {
 
         log.info("Person deleted");
     }
+
+    @Override
+    public void editPerson(ParticipantId id, FirstName firstName, LastName lastName, PersonalCode personalCode, PaymentType paymentType, Description description) {
+        jdbcTemplate.update(
+                "UPDATE person " +
+                        "SET first_name = ?, " +
+                        "last_name = ?, " +
+                        "personal_code = ?, " +
+                        "payment_type = ?, " +
+                        "description = ? WHERE id = ?",
+                firstName.value(),
+                lastName.value(),
+                personalCode.value(),
+                paymentType.value(),
+                description.value(),
+                participantId().value()
+        );
+
+        log.info("Person updated");
+    }
 }

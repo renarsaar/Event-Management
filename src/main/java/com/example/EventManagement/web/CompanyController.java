@@ -9,11 +9,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -28,7 +26,7 @@ class CompanyController {
     private final @NonNull CreateCompany createCompany;
 
     @GetMapping("/company/delete")
-    public String delete(@RequestParam(name="companyId")String companyId, @RequestParam(name="eventId")String eventId) {
+    public String delete(@RequestParam(name="companyId") String companyId, @RequestParam(name="eventId") String eventId) {
         ParticipantId id = new ParticipantId(companyId);
 
         companies.byId(id).deleteCompany(id);
@@ -56,6 +54,35 @@ class CompanyController {
         return "redirect:/event/" + eventId;
     }
 
+    @GetMapping("/company/edit/{companyId}")
+    public String edit(@PathVariable @NonNull String companyId, Model model) {
+        Company company = companies.byId(new ParticipantId(companyId));
+        Map<String, Object> companyData = toData(company);
+        model.addAttribute(
+                "company", companyData
+        );
+
+        return "company.html";
+    }
+
+    @PostMapping("/company/edit")
+    public String update(
+            @RequestParam(name = "companyId") String companyId,
+            String legalName, String registryCode, int numberOfPartakers, String paymentType, String description
+    ) {
+        Company company = companies.byId(new ParticipantId(companyId));
+        company.editCompany(
+                new ParticipantId(companyId),
+                new LegalName(legalName),
+                new RegistryCode(registryCode),
+                new NumberOfPartakers(numberOfPartakers),
+                new PaymentType(paymentType),
+                new Description(description, 5000)
+        );
+
+        return "redirect:/";
+    }
+
     @GetMapping("/company/error")
     public String error(String message, Model model) {
         model.addAttribute("messageCode", message);
@@ -75,5 +102,17 @@ class CompanyController {
         }
 
         return "Something went wrong creating a new participant";
+    }
+
+    private Map<String, Object> toData(Company company) {
+        return Map.of(
+                "id", company.participantId().value(),
+                "event_id", company.eventId().value(),
+                "legal_name", company.legalName().value(),
+                "registry_code", company.registryCode().value(),
+                "number_of_partakers", company.numberOfPartakers().value(),
+                "payment_type", company.paymentType().value(),
+                "description", company.description().value()
+        );
     }
 }
